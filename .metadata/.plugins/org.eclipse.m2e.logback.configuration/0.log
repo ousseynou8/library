@@ -1,0 +1,12 @@
+2022-03-01 18:50:06,295 [Worker-0: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2022-03-01 18:52:32,770 [Worker-8: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: fr.fofdesign:portfolio_api:0.0.1-SNAPSHOT @ C:\eclipse_api\api_top_gaming\portfolio_api\pom.xml.
+2022-03-01 18:52:34,262 [Worker-8: Importing Maven projects] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: org.groupe1:top_gaming:0.0.1-SNAPSHOT @ C:\eclipse_api\api_top_gaming\top_gaming\pom.xml.
+2022-03-01 18:52:37,213 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /portfolio_api/src/main/java
+2022-03-01 18:52:37,215 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /portfolio_api/src/main/resources
+2022-03-01 18:52:37,216 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /portfolio_api/src/main/resources
+2022-03-01 18:52:37,217 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /portfolio_api/src/test/java
+2022-03-01 18:52:39,481 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /top_gaming/src/main/java
+2022-03-01 18:52:39,481 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /top_gaming/src/main/resources
+2022-03-01 18:52:39,482 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding resource folder /top_gaming/src/main/resources
+2022-03-01 18:52:39,484 [Worker-8: Importing Maven projects] INFO  o.e.m.j.i.AbstractJavaProjectConfigurator - Adding source folder /top_gaming/src/test/java
+2022-03-01 18:52:40,224 [Worker-8: Importing Maven projects] INFO  o.e.m.c.i.p.ProjectConfigurationManager - Imported and configured 2 project(s) in 12 sec
