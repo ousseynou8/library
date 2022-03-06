@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("*")
 public class UserControler {
 
-
     public void user(){
 
     }
