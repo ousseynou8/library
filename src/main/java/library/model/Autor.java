@@ -9,9 +9,9 @@ import java.util.Date;
 @Entity
 public class Autor extends Personne implements Serializable  {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
     private Long id;
 
     @Column(nullable = false,length = 255)
@@ -20,7 +20,7 @@ public class Autor extends Personne implements Serializable  {
     @Column(nullable = false,length = 255)
     private String nationality;
 
-    @Column(nullable = false,name = "typeAutor")
+    @Column(nullable = false)
     private String type;
 
     // jointure
@@ -31,22 +31,11 @@ public class Autor extends Personne implements Serializable  {
         books = new ArrayList<>();
     }
 
-    public Autor(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String about, String nationality, String type, Collection<Book> books) {
+    public Autor(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String about, String nationality, String type) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
         this.about = about;
         this.nationality = nationality;
         this.type = type;
-        this.books = books;
-    }
-
-    @Override
-    public long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getAbout() {

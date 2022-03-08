@@ -8,7 +8,7 @@ import java.util.Date;
 @MappedSuperclass
 public class Personne implements Serializable {
 
-    private long id;
+
     private String Firstname;
     private String lasName;
     private String sexe;
@@ -28,15 +28,6 @@ public class Personne implements Serializable {
         this.dateBirth = dateBirth;
     }
 
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getFirstname() {
         return Firstname;
