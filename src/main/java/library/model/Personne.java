@@ -16,7 +16,9 @@ public class Personne implements Serializable {
     private String email;
     private Date dateBirth;
 
-
+    public Personne() {
+     super();
+    }
     public Personne(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth) {
         this.Firstname = firstname;
         this.lasName = lasName;
@@ -25,6 +27,8 @@ public class Personne implements Serializable {
         this.email = email;
         this.dateBirth = dateBirth;
     }
+
+
 
     public long getId() {
         return id;

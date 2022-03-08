@@ -7,10 +7,11 @@ import java.util.Collection;
 import java.util.Date;
 
 @Entity
-public class User implements Serializable extends Personne {
+public class User extends Personne implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private long id;
     @Column(length = 255,nullable = false)
     private String name;
@@ -29,8 +30,9 @@ public class User implements Serializable extends Personne {
         loans = new ArrayList<>();
     }
 
-    public User(String name, String passWord, String type, Date lastConnecte) {
-        super();
+    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, long id, String name, String passWord, String type, Date lastConnecte) {
+        super(firstname, lasName, sexe, photo, email, dateBirth);
+        this.id = id;
         this.name = name;
         this.passWord = passWord;
         this.type = type;
