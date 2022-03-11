@@ -19,7 +19,7 @@ public class BookControler {
     private BootService bootService;
 
     @GetMapping("/book/{id}")
-    public ResponseEntity<Optional<Book>> findAllBook(@PathVariable("id") int id){
+    public ResponseEntity<Optional<Book>> getBookById(@PathVariable("id") int id){
         Optional<Book> books = bootService.findeById(id);
         return ResponseEntity.ok(books);
     }
