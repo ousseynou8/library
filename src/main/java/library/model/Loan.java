@@ -8,11 +8,11 @@ import java.util.Date;
 public class Loan implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column( nullable = false)
     private long id;
 
-    @Column(name = "dateBegin",nullable = false)
+    @Column(nullable = false)
     private Date dat;
 
     @Column(nullable = false)
@@ -24,8 +24,7 @@ public class Loan implements Serializable {
 
     @ManyToOne
     private Book book;
-    public Loan() {
-    }
+
     public Loan(Date dat, Date duration, User user, Book book) {
         this.dat = dat;
         this.duration = duration;

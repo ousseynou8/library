@@ -1,13 +1,10 @@
 package library.model;
 
-import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
-import java.io.Serializable;
 import java.util.Date;
 
 @MappedSuperclass
-public class Personne implements Serializable {
-
+public class Personne {
 
     private String Firstname;
     private String lasName;

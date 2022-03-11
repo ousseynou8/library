@@ -11,14 +11,14 @@ import java.util.Collection;
 public class Book implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private long id;
-    @Column(name = "BookTile", nullable = false,length = 255)
+    @Column( nullable = false,length = 255)
     private String title;
     @Column(nullable = false)
     private String description;
-    @Column(name ="BookSummary",nullable = false)
+    @Column(nullable = false)
     private String summary;
     @Column(nullable = false)
     private int quantity;
@@ -29,7 +29,7 @@ public class Book implements Serializable {
     //JOINTURE
     @ManyToOne
     private Autor autor;
-    @OneToMany
+    @OneToMany(mappedBy = "book")
     private Collection<Loan> loans;
     @ManyToOne
     private Category category;

@@ -8,8 +8,8 @@ import java.util.Collection;
 @Entity
 public class Category implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column( nullable = false)
     private Long id;
 
     @Column(nullable = false)
