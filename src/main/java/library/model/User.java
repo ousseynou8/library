@@ -10,16 +10,16 @@ import java.util.Date;
 public class User extends Personne implements Serializable  {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
     private long id;
     @Column(length = 255,nullable = false)
     private String name;
     @Column(nullable = false,unique = true)
     private String passWord;
-    @Column(nullable = false,name = "userType")
+    @Column(nullable = false)
     private String type;
-    @Column(name = "lasteConnection")
+    @Column(nullable = true)
     private Date lastConnecte;
 
     //JOINTURE

@@ -9,10 +9,9 @@ import java.util.Date;
 @Entity
 public class Autor extends Personne implements Serializable  {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    private long id;
 
     @Column(nullable = false,length = 255)
     private String about;
