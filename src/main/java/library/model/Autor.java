@@ -24,17 +24,37 @@ public class Autor extends Personne implements Serializable  {
 
     // jointure
     @OneToMany(mappedBy ="autor")
+
     private Collection<Book> books;
+    @ManyToOne
+    private Token token;
 
     public Autor() {
         books = new ArrayList<>();
     }
 
-    public Autor(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String about, String nationality, String type) {
+    public Autor(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String about, String nationality, String type,Token token) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
         this.about = about;
         this.nationality = nationality;
         this.type = type;
+        this.token= token;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 
     public String getAbout() {

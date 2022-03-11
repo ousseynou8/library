@@ -12,4 +12,6 @@ public interface BookRepo extends JpaRepository<Book,Long> {
 
     @Query("select b from Book b where b.id =:id")
     public Optional<Book> findBookBy(int id);
+
+
 }

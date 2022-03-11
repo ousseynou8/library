@@ -17,26 +17,39 @@ public class User extends Personne implements Serializable  {
     private String name;
     @Column(nullable = false,unique = true)
     private String passWord;
-    @Column(nullable = false)
-    private String type;
     @Column(nullable = true)
+    @Temporal(TemporalType.DATE)
     private Date lastConnecte;
 
     //JOINTURE
     @OneToMany(mappedBy = "user")
     private Collection<Loan> loans;
+    @ManyToOne
+    private Role role;
+
+    @ManyToOne
+    private Token token;
+
 
     public User() {
         loans = new ArrayList<>();
     }
 
-    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, long id, String name, String passWord, String type, Date lastConnecte) {
+    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String name, String passWord, Date lastConnecte, Role role, Token token) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
-        this.id = id;
         this.name = name;
         this.passWord = passWord;
-        this.type = type;
         this.lastConnecte = lastConnecte;
+        this.role = role;
+        this.token = token;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -55,14 +68,6 @@ public class User extends Personne implements Serializable  {
         this.passWord = passWord;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public Date getLastConnecte() {
         return lastConnecte;
     }
@@ -77,5 +82,21 @@ public class User extends Personne implements Serializable  {
 
     public void setLoans(Collection<Loan> loans) {
         this.loans = loans;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 }
