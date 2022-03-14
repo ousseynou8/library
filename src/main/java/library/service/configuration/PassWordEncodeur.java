@@ -1,19 +1,23 @@
 package library.service.configuration;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
-public class PassWordEncodeur implements PasswordEncoder {
+public class PassWordEncodeur {
 
-    @Override
-    public String encode(CharSequence rawPassword) {
-        return null;
+    private BCryptPasswordEncoder passwordEncoder;
+
+    public PassWordEncodeur() {
+        passwordEncoder = new BCryptPasswordEncoder();
     }
 
-    @Override
-    public boolean matches(CharSequence rawPassword, String encodedPassword) {
+    public String encoder(String rawPassWord){
+       return passwordEncoder.encode(rawPassWord);
+    }
 
-        return false;
+    public Boolean match(String rawPassword,String encodePassWord){
+        return passwordEncoder.matches(rawPassword,encodePassWord);
     }
 }

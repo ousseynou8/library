@@ -8,13 +8,13 @@ import java.util.Date;
 public class userDTO extends Personne {
     private String name;
     private String passWord;
-    private Date lastConnecte;
 
-    public userDTO(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String name, String passWord, Date lastConnecte) {
+
+    public userDTO(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String name, String passWord) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
         this.name = name;
         this.passWord = passWord;
-        this.lastConnecte = lastConnecte;
+
     }
 
     public String getName() {
@@ -33,11 +33,4 @@ public class userDTO extends Personne {
         this.passWord = passWord;
     }
 
-    public Date getLastConnecte() {
-        return lastConnecte;
-    }
-
-    public void setLastConnecte(Date lastConnecte) {
-        this.lastConnecte = lastConnecte;
-    }
 }
