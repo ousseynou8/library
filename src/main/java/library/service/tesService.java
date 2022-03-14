@@ -6,4 +6,8 @@ import org.springframework.stereotype.Service;
 public class tesService {
 
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
