@@ -6,6 +6,7 @@ import java.util.Date;
 
 @Entity
 public class Loan implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,13 +26,16 @@ public class Loan implements Serializable {
     @ManyToOne
     private Book book;
 
+    public Loan() {
+
+    }
+
     public Loan(Date dat, Date duration, User user, Book book) {
         this.dat = dat;
         this.duration = duration;
         this.user = user;
         this.book = book;
     }
-
 
 
     public long getId() {

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -18,9 +19,17 @@ public class BookControler {
     @Autowired
     private BootService bootService;
 
+    @GetMapping("/book/all")
+    public ResponseEntity<List<Book>> collectAllBook(){
+        System.out.println("hello ");
+        return ResponseEntity.ok(bootService.getAllBook());
+    }
+
+
     @GetMapping("/book/{id}")
-    public ResponseEntity<Optional<Book>> getBookById(@PathVariable("id") int id){
-        Optional<Book> books = bootService.findeById(id);
-        return ResponseEntity.ok(books);
+    public ResponseEntity<Optional<Book>> collectBookId(@PathVariable("id") long id){
+        System.out.println("_______________________bismamme-------------------");
+
+        return null;
     }
 }

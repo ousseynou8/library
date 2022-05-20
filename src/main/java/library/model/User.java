@@ -8,10 +8,11 @@ import java.util.Date;
 
 @Entity
 public class User extends Personne implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private long id;
     @Column(length = 255,nullable = false)
     private String pseudo;

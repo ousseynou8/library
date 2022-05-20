@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@Table(name = "Book")
 public class Book implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +26,12 @@ public class Book implements Serializable {
     private int quantity;
     @Column(nullable = false,unique = true)
     private String isbn;
+    @Column(nullable = false)
+    private int nbrPage;
+    @Column(nullable = false,unique = true)
+    private String image;
 
-
-    //JOINTURE
+    //JOINTURE ;
     @ManyToOne
     private Autor autor;
     @OneToMany(mappedBy = "book")
@@ -38,16 +43,43 @@ public class Book implements Serializable {
         loans = new ArrayList<>();
     }
 
-    public Book(String title, String description, String summary, int quantity, String isbn, Autor autor, Category category) {
-        super();
+    public Book(String title, String description, String summary, int quantity, String isbn, int nbrPage, String image, Autor autor, Category category) {
         this.title = title;
         this.description = description;
         this.summary = summary;
         this.quantity = quantity;
         this.isbn = isbn;
+        this.nbrPage = nbrPage;
+        this.image = image;
         this.autor = autor;
         this.category = category;
     }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getNbrPage() {
+        return nbrPage;
+    }
+
+    public void setNbrPage(int nbrPage) {
+        this.nbrPage = nbrPage;
+    }
+
+
 
     public long getId() {
         return id;
@@ -97,13 +129,6 @@ public class Book implements Serializable {
         this.isbn = isbn;
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
 
     public Collection<Loan> getLoans() {
         return loans;

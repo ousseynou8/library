@@ -1,29 +1,38 @@
 package library.model;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
-@MappedSuperclass
-public class Personne {
+@Entity
+public class Personne implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "id", nullable = false)
+    private Long id;
 
     private String Firstname;
-    private String lasName;
+    private String lastName;
     private String sexe;
     private String photo;
     private String email;
     private Date dateBirth;
 
+
+
     public Personne() {
      super();
     }
-    public Personne(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth) {
+    public Personne(String firstname, String lastName, String sexe, String photo, String email, Date dateBirth) {
         this.Firstname = firstname;
-        this.lasName = lasName;
+        this.lastName = lastName;
         this.sexe = sexe;
         this.photo = photo;
         this.email = email;
         this.dateBirth = dateBirth;
     }
+
 
 
     public String getFirstname() {
@@ -34,12 +43,12 @@ public class Personne {
         Firstname = firstname;
     }
 
-    public String getLasName() {
-        return lasName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLasName(String lasName) {
-        this.lasName = lasName;
+    public void setLastName(String lasName) {
+        this.lastName = lasName;
     }
 
     public String getSexe() {

@@ -8,17 +8,24 @@ import java.util.Date;
 
 @Entity
 public class Token implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+
     @Id
     @Column( nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
+
     @Column(unique = true,nullable = false)
     private  String value;
+
     @Column(nullable = false)
     private Date dateExpiration;
 
     @OneToMany(mappedBy = "token")
     private Collection<Autor> autors;
+
     @OneToMany(mappedBy = "token")
     private Collection<User> users;
 
