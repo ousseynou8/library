@@ -4,14 +4,15 @@ import library.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import javax.swing.text.html.Option;
-import java.util.List;
+
 import java.util.Optional;
 
 public interface BookRepo extends JpaRepository<Book,Long> {
 
     @Query("select b from Book b where b.id =:id")
-    public Optional<Book> findBookBy(int id);
+    public Optional<Book> findBookBy(long id);
 
+    @Query("select b from Book b WHERE b.isbn=:isbn")
+    Optional<Book> findBookByIsbnAnd(String isbn);
 
 }

@@ -7,15 +7,19 @@ import java.util.Collection;
 
 @Entity
 public class Role implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+
+    public static final String USER = "ROLE_ADMIN";
+    public static final String ADMIN ="ROLE_USER" ;
+
+
     @Id
-    @Column( nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
-    private static final String USER ="ROLE_ADMIN";
-    private static final String ADMIN ="ROLE_USER";
-
-    @Column(length = 100,nullable = false)
+    @Column(nullable = false)
     private String nom;
 
     //JOINTURE
@@ -31,11 +35,11 @@ public class Role implements Serializable {
     }
 
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

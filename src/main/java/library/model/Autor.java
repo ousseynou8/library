@@ -1,16 +1,17 @@
 package library.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
+
 @Entity
-public class Autor extends Personne implements Serializable  {
+public class Autor extends Personne{
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(nullable = false,length = 255)
@@ -24,21 +25,23 @@ public class Autor extends Personne implements Serializable  {
 
     // jointure
     @OneToMany(mappedBy ="autor")
-
     private Collection<Book> books;
+
     @ManyToOne
     private Token token;
 
     public Autor() {
-        books = new ArrayList<>();
+        books =new ArrayList<>();
     }
 
-    public Autor(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String about, String nationality, String type,Token token) {
-        super(firstname, lasName, sexe, photo, email, dateBirth);
+    public Autor(long id, String about, String nationality, String type, Collection<Book> books, Token token) {
+        super();
+        this.id = id;
         this.about = about;
         this.nationality = nationality;
         this.type = type;
-        this.token= token;
+        this.books = books;
+        this.token = token;
     }
 
     public long getId() {
@@ -47,14 +50,6 @@ public class Autor extends Personne implements Serializable  {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Token getToken() {
-        return token;
-    }
-
-    public void setToken(Token token) {
-        this.token = token;
     }
 
     public String getAbout() {
@@ -87,5 +82,13 @@ public class Autor extends Personne implements Serializable  {
 
     public void setBooks(Collection<Book> books) {
         this.books = books;
+    }
+
+    public Token getToken() {
+        return token;
+    }
+
+    public void setToken(Token token) {
+        this.token = token;
     }
 }

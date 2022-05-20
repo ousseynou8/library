@@ -8,13 +8,14 @@ import java.util.Date;
 
 @Entity
 public class User extends Personne implements Serializable  {
+    private static final long serialVersionUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false)
     private long id;
     @Column(length = 255,nullable = false)
-    private String name;
+    private String pseudo;
     @Column(nullable = false,unique = true)
     private String passWord;
     @Column(nullable = true)
@@ -35,11 +36,16 @@ public class User extends Personne implements Serializable  {
         loans = new ArrayList<>();
     }
 
-    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String name, String passWord, Date lastConnecte, Role role, Token token) {
+
+
+    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String pseudo, String passWord, Date lastConnecte) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
-        this.name = name;
+        this.pseudo = pseudo;
         this.passWord = passWord;
         this.lastConnecte = lastConnecte;
+    }
+
+    public User(Role role, Token token) {
         this.role = role;
         this.token = token;
     }
@@ -52,12 +58,12 @@ public class User extends Personne implements Serializable  {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPseudo(String name) {
+        this.pseudo = name;
     }
 
     public String getPassWord() {

@@ -7,10 +7,13 @@ import java.util.Collection;
 
 @Entity
 public class Category implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column( nullable = false)
-    private Long id;
+    private long id;
 
     @Column(nullable = false)
     private String name;
