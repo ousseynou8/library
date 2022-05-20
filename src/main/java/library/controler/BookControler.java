@@ -16,20 +16,5 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class BookControler {
 
-    @Autowired
-    private BootService bootService;
 
-    @GetMapping("/book/all")
-    public ResponseEntity<List<Book>> collectAllBook(){
-        System.out.println("hello ");
-        return ResponseEntity.ok(bootService.getAllBook());
-    }
-
-
-    @GetMapping("/book/{id}")
-    public ResponseEntity<Optional<Book>> collectBookId(@PathVariable("id") long id){
-        System.out.println("_______________________bismamme-------------------");
-
-        return null;
-    }
 }

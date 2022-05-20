@@ -22,8 +22,9 @@ public class BootService {
     private BookRepo bookRepo;
     @Autowired
     private CategoryRepo categoryRepo;
+
     @Autowired
-            private AutorRepo autorRepo;
+    private AutorRepo autorRepo;
 
     HashMap<String,String> ex = new HashMap<>();
 
@@ -94,6 +95,14 @@ public class BootService {
         return null;
     }
 
+    /**
+     *  autor Bismark
+     * @param name
+     * @param image
+     * @param description
+     * @return
+     * @throws CustomeException
+     */
     public Category creatCategory(String name,String image,String description) throws CustomeException {
         Optional<Category> categoryName = categoryRepo.findCategoryByName(name);
         if (categoryName.isPresent()) {
