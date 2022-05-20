@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class BootService {
@@ -28,12 +27,6 @@ public class BootService {
 
     HashMap<String,String> ex = new HashMap<>();
 
-    //genrer un un isbn = un identifiant uniqe comme un token
-    public String isbn(){
-        UUID uuid=UUID.randomUUID();
-        String isbn =uuid.toString();
-        return isbn;
-    }
 
     /**
      * retourner la liste des livre
@@ -43,8 +36,13 @@ public class BootService {
        List<Book> book = bookRepo.findAll();
        return book;
     }
+    public Optional<Book> getBookById(Long id){
+        return bookRepo.findBookBy(id);
+    }
 
-
+    public Optional<Book> getBookByName(String name) {
+        return bookRepo.findBookByName(name);
+    }
 
     /**
      * @param title
@@ -117,6 +115,5 @@ public class BootService {
             categoryRepo.save(category);
             return category;
         }
-
     }
 }

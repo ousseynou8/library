@@ -18,7 +18,9 @@ public class Book implements Serializable {
     private long id;
     @Column( nullable = false,length = 255)
     private String title;
-    @Column(nullable = false)
+    @Column( nullable = false,length = 255,unique = true)
+    private String name;
+    @Column(nullable = false,unique = true)
     private String description;
     @Column(nullable = false)
     private String summary;
@@ -43,7 +45,7 @@ public class Book implements Serializable {
         loans = new ArrayList<>();
     }
 
-    public Book(String title, String description, String summary, int quantity, String isbn, int nbrPage, String image, Autor autor, Category category) {
+    public Book(String title, String description, String summary, int quantity, String isbn, int nbrPage, String image, Autor autor, Category category,String name) {
         this.title = title;
         this.description = description;
         this.summary = summary;
@@ -53,6 +55,15 @@ public class Book implements Serializable {
         this.image = image;
         this.autor = autor;
         this.category = category;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Autor getAutor() {
