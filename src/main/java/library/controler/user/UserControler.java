@@ -1,4 +1,4 @@
-package library.controler;
+package library.controler.user;
 
 import library.dto.UserDTO;
 import library.exception.CustomeException;

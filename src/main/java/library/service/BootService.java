@@ -1,5 +1,6 @@
 package library.service;
 
+import library.dto.BookDTO.CategoryDTO;
 import library.exception.CustomeException;
 import library.model.Autor;
 import library.model.Book;
@@ -94,24 +95,22 @@ public class BootService {
     }
 
     /**
-     *  autor Bismark
-     * @param name
-     * @param image
-     * @param description
+     *
+     * @param categoryDTO
      * @return
      * @throws CustomeException
      */
-    public Category creatCategory(String name,String image,String description) throws CustomeException {
-        Optional<Category> categoryName = categoryRepo.findCategoryByName(name);
+    public Category creatCategory(CategoryDTO categoryDTO) throws CustomeException {
+        Optional<Category> categoryName = categoryRepo.findCategoryByName(categoryDTO.getName());
         if (categoryName.isPresent()) {
             ex.put("Already present","can't add this category already present");
             CustomeException customeException = new CustomeException("erreur",ex);
             throw  customeException;
         }else {
             Category category = categoryName.get();
-            category.setName(name);
-            category.setDescription(description);
-            category.setImage(image);
+            category.setName(categoryDTO.getName());
+            category.setDescription(categoryDTO.getDescription());
+            category.setImage(categoryDTO.getImage());
             categoryRepo.save(category);
             return category;
         }
