@@ -6,6 +6,9 @@ public class CategoryDTO {
     private String image;
     private String description;
 
+    public CategoryDTO() {
+    }
+
     public String getName() {
         return name;
     }

@@ -1,4 +1,4 @@
-package library.service;
+package library.service.user;
 
 import library.dto.UserDTO;
 import library.exception.CustomeException;

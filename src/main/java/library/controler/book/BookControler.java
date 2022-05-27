@@ -3,7 +3,7 @@ package library.controler.book;
 import library.dto.BookDTO.BootDTO;
 import library.exception.CustomeException;
 import library.model.Book;
-import library.service.BootService;
+import library.service.book.BootService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -45,10 +45,9 @@ public class BookControler {
     public ResponseEntity<Book> addBook(@RequestBody BootDTO bootDTO ) throws CustomeException {
 
         try {
-            System.out.printf("hellloo bismark___________sasssssssss------------------");
+            System.out.printf("------------------------try passee --------------------");
 
             Book book = bootService.creatBoot(bootDTO.getTitle(),bootDTO.getDescription(),bootDTO.getSummary(),bootDTO.getQuantity(),bootDTO.getNbrPage(),bootDTO.getIsbn(),bootDTO.getCategory(),bootDTO.getImage(),bootDTO.getAutorId());
-            System.out.printf(""+book.getDescription());
             return ResponseEntity.badRequest().body(book);
         }catch (CustomeException exception){
             exception.getMessageError();
