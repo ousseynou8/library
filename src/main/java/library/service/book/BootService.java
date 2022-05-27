@@ -1,5 +1,6 @@
-package library.service;
+package library.service.book;
 
+import library.dto.BookDTO.CategoryDTO;
 import library.exception.CustomeException;
 import library.model.Autor;
 import library.model.Book;
@@ -25,7 +26,7 @@ public class BootService {
     @Autowired
     private AutorRepo autorRepo;
 
-    HashMap<String,String> ex = new HashMap<>();
+   private HashMap<String,String> ex = new HashMap<>();
 
 
     /**
@@ -57,9 +58,13 @@ public class BootService {
         Optional<Category> categoryName= categoryRepo.findCategoryByName(category);
         Optional<Autor> autor = autorRepo.findById(autorId);
 
-        if (!bookIsb.isPresent() && (!autor.isPresent()) && (!categoryName.isPresent())) {
-           ex.put("Book exist","The book your trying to insert exist please try again");
+        if (!(bookIsb.isPresent()) && !(autor.isPresent()) && !(categoryName.isPresent())) {
+            System.out.printf("------------------erreur------------executer---------------");
+
+            ex.put("Book exist","The book your trying to insert exist please try again");
         }else {
+            System.out.printf("----insertion reussi---------------");
+
             Book book = new Book();
             book.setIsbn(isbn);
             book.setImage(image);
@@ -68,11 +73,9 @@ public class BootService {
             book.setSummary(summary);
             book.setTitle(title);
             book.setNbrPage(nbrPage);
-
             // autor
             Autor autorThisBook=autor.get();
             book.setAutor(autorThisBook);
-
             //
             if (categoryName.isPresent()) {
                 Category category1= categoryName.get();
@@ -80,40 +83,13 @@ public class BootService {
             }else {
                 ex.put("Category inexistant","the category is not existant");
             }
-
             if (!ex.isEmpty()) {
                 CustomeException customeException =new CustomeException("insection echec",ex);
                 throw customeException;
             }
-
             bookRepo.save(book);
             return book;
-
         }
         return null;
-    }
-
-    /**
-     *  autor Bismark
-     * @param name
-     * @param image
-     * @param description
-     * @return
-     * @throws CustomeException
-     */
-    public Category creatCategory(String name,String image,String description) throws CustomeException {
-        Optional<Category> categoryName = categoryRepo.findCategoryByName(name);
-        if (categoryName.isPresent()) {
-            ex.put("Already present","can't add this category already present");
-            CustomeException customeException = new CustomeException("erreur",ex);
-            throw  customeException;
-        }else {
-            Category category = categoryName.get();
-            category.setName(name);
-            category.setDescription(description);
-            category.setImage(image);
-            categoryRepo.save(category);
-            return category;
-        }
     }
 }

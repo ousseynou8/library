@@ -1,4 +1,4 @@
-package library.dto;
+package library.dto.BookDTO;
 
 public class BootDTO {
     private String title;
@@ -10,6 +10,10 @@ public class BootDTO {
     private String category;
     private String image;
     private Long autorId;
+
+    public BootDTO() {
+
+    }
 
     public String getTitle() {
         return title;

@@ -1,9 +1,9 @@
-package library.controler;
+package library.controler.user;
 
 import library.dto.UserDTO;
 import library.exception.CustomeException;
 import library.model.User;
-import library.service.AdminService;
+import library.service.user.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

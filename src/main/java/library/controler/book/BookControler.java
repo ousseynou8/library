@@ -1,9 +1,9 @@
-package library.controler;
+package library.controler.book;
 
-import library.dto.BootDTO;
+import library.dto.BookDTO.BootDTO;
 import library.exception.CustomeException;
 import library.model.Book;
-import library.service.BootService;
+import library.service.book.BootService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -20,6 +20,7 @@ public class BookControler {
     @Autowired
     private BootService bootService;
 
+
     @GetMapping("/book/{id}")
   public String test(){
         return "hello";
@@ -28,12 +29,7 @@ public class BookControler {
     // @PathVariable is extracting values from the URI path,
     // it’s not encoded.
     // @RequestParam is encoded.
-    @GetMapping("/book/{id}")
-    public ResponseEntity<Optional<Book>> receiveBook(@PathVariable("id") Long id ){
-        Optional<Book> book = bootService.getBookById(id);
-        return ResponseEntity.ok(book);
 
-    }
     @GetMapping("/book/all")
     public ResponseEntity<List<Book>> receiveBookList(){
         List<Book> books = bootService.getAllBook();
@@ -46,14 +42,16 @@ public class BookControler {
     }
 
     @PostMapping("/book/insert")
-    public ResponseEntity<Book> addBook(@RequestBody BootDTO bootDTO) throws CustomeException {
+    public ResponseEntity<Book> addBook(@RequestBody BootDTO bootDTO ) throws CustomeException {
+
         try {
+            System.out.printf("------------------------try passee --------------------");
+
             Book book = bootService.creatBoot(bootDTO.getTitle(),bootDTO.getDescription(),bootDTO.getSummary(),bootDTO.getQuantity(),bootDTO.getNbrPage(),bootDTO.getIsbn(),bootDTO.getCategory(),bootDTO.getImage(),bootDTO.getAutorId());
             return ResponseEntity.badRequest().body(book);
         }catch (CustomeException exception){
             exception.getMessageError();
         }
-
         return null;
     }
 
