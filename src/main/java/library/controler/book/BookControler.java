@@ -45,7 +45,6 @@ public class BookControler {
     public ResponseEntity<Book> addBook(@RequestBody BootDTO bootDTO ) throws CustomeException {
 
         try {
-            System.out.printf("------------------------try passee --------------------");
 
             Book book = bootService.creatBoot(bootDTO.getTitle(),bootDTO.getDescription(),bootDTO.getSummary(),bootDTO.getQuantity(),bootDTO.getNbrPage(),bootDTO.getIsbn(),bootDTO.getCategory(),bootDTO.getImage(),bootDTO.getAutorId());
             return ResponseEntity.badRequest().body(book);

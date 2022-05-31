@@ -1,6 +1,8 @@
+/**
+ *
+ */
 package library.service.category;
 
-import library.dto.BookDTO.CategoryDTO;
 import library.exception.CustomeException;
 import library.model.Category;
 import library.repository.CategoryRepo;
@@ -8,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Optional;
+
 
 @Service
 public class CategoryService {
@@ -20,13 +22,11 @@ public class CategoryService {
     private CategoryRepo categoryRepo;
 
 
-
-
     public Category creatCategory(String name,String image,String description) throws CustomeException {
         Optional<Category> categoryName = categoryRepo.findCategoryByName(name);
 
-        if (categoryName.isPresent()) {
-            ex.put("error","erer");
+        if(categoryName.isPresent()) {
+            ex.put("error","err");
             CustomeException customeException = new CustomeException("erreur",ex);
             return null;
         }
@@ -40,11 +40,13 @@ public class CategoryService {
     }
 
     /**
-     * list of book
+     *
      * @return
      */
-    public List<Category> CategoryList(){
-        return (List<Category>) categoryRepo.findAll();
+    public Iterable<Category> CategoryList(){
+
+       Iterable<Category> category = categoryRepo.findAll();
+        return category;
     }
 
     /**
@@ -58,14 +60,19 @@ public class CategoryService {
     }
 
 
-     public void deleteCategoryById (Long id) throws CustomeException {
+    /**
+     *
+     * @param id
+     * @throws CustomeException
+     */
+     public void deleteCategory(Long id) throws CustomeException {
          Optional<Category> category = categoryRepo.findById(id);
         if (category.isPresent()) {
             Category category1 = category.get();
             categoryRepo.delete(category1);
         }
-        ex.put("erreur insert","try againe");
-        CustomeException customeException= new CustomeException("erreur",ex);
+        ex.put("error insert","try againe");
+        CustomeException customeException= new CustomeException("error",ex);
         throw customeException;
     }
 }

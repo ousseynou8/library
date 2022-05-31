@@ -1,5 +1,7 @@
 package library.model;
 
+import library.need.Sexe;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,43 +15,37 @@ public class Autor extends Personne{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
     @Column(nullable = false,length = 255)
     private String about;
-
     @Column(nullable = false,length = 255)
     private String nationality;
-
-    @Column(nullable = false)
-    private String type;
 
     // jointure
     @OneToMany(mappedBy ="autor")
     private Collection<Book> books;
-
     @ManyToOne
     private Token token;
+    @OneToMany(mappedBy = "autor")
+    private Collection<Type> types;
 
     public Autor() {
         books =new ArrayList<>();
+        types = new ArrayList<>();
     }
 
-    public Autor(long id, String about, String nationality, String type, Collection<Book> books, Token token) {
-        super();
-        this.id = id;
+    public Autor(String about, String nationality, Token token, Collection<Type> types) {
         this.about = about;
         this.nationality = nationality;
-        this.type = type;
-        this.books = books;
         this.token = token;
+        this.types = types;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
+    public Autor(String firstname, String lastName, Sexe sexe, String photo, String email, Date dateBirth, String about, String nationality, Token token, Collection<Type> types) {
+        super(firstname, lastName, sexe, photo, email, dateBirth);
+        this.about = about;
+        this.nationality = nationality;
+        this.token = token;
+        this.types = types;
     }
 
     public String getAbout() {
@@ -68,12 +64,12 @@ public class Autor extends Personne{
         this.nationality = nationality;
     }
 
-    public String getType() {
-        return type;
+    public Collection<Type> getTypes() {
+        return types;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypes(Collection<Type> types) {
+        this.types = types;
     }
 
     public Collection<Book> getBooks() {

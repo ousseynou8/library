@@ -1,5 +1,7 @@
 package library.model;
 
+import library.need.Sexe;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -12,11 +14,19 @@ public class Personne implements Serializable {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(nullable = false)
     private String Firstname;
+    @Column(nullable = false)
     private String lastName;
-    private String sexe;
+    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
+    private Sexe sexe;
+    @Column(nullable = false,unique = true)
     private String photo;
+    @Column(nullable = false,unique = true)
     private String email;
+    @Column(nullable = false,name = "DOB")
+    @Temporal(TemporalType.DATE)
     private Date dateBirth;
 
 
@@ -24,16 +34,15 @@ public class Personne implements Serializable {
     public Personne() {
      super();
     }
-    public Personne(String firstname, String lastName, String sexe, String photo, String email, Date dateBirth) {
-        this.Firstname = firstname;
+
+    public Personne(String firstname, String lastName, Sexe sexe, String photo, String email, Date dateBirth) {
+        Firstname = firstname;
         this.lastName = lastName;
         this.sexe = sexe;
         this.photo = photo;
         this.email = email;
         this.dateBirth = dateBirth;
     }
-
-
 
     public String getFirstname() {
         return Firstname;
@@ -51,11 +60,11 @@ public class Personne implements Serializable {
         this.lastName = lasName;
     }
 
-    public String getSexe() {
+    public Sexe getSexe() {
         return sexe;
     }
 
-    public void setSexe(String sexe) {
+    public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
 

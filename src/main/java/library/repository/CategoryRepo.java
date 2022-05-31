@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface CategoryRepo extends JpaRepository<Category,Long> {
+public interface CategoryRepo extends CrudRepository<Category,Long> {
 
 
     //@Query("SELECT C FROM Category C WHERE C.name =:name")

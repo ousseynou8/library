@@ -21,9 +21,7 @@ public class CategoryControler {
     private CategoryService categoryService;
 
 
-
-
-    @PostMapping("/category/insert")
+    @PostMapping(value = "/category/insert")
     public ResponseEntity<Category> addCategory(@RequestBody CategoryDTO categoryDTO) {
         try {
             System.out.println("---------------category passed----------"+categoryDTO.getName());
@@ -34,34 +32,33 @@ public class CategoryControler {
 
             System.out.println("---------------category non----------");
 
-            e.printStackTrace();
+            e.getMessageError();
         }
     return null;
     }
 
-
-
-
-    @GetMapping("/{name}")
-    ResponseEntity<Optional<Category>> sendCategoryByName(@PathVariable(value = "name") String name){
-
+    @GetMapping("category/{name}")
+    public ResponseEntity<Optional<Category>> sendCategoryByName(@PathVariable(value = "name") String name){
         Optional<Category> category = categoryService.getCategoryByName(name);
         return ResponseEntity.ok(category);
     }
 
-    @GetMapping("/categorylist")
-    public ResponseEntity<List<Category>> listCategory(){
-        List<Category> categories = categoryService.CategoryList();
+    @GetMapping("category/categorylist")
+    public ResponseEntity<Iterable<Category>> listCategory(){
+        Iterable<Category> categories = categoryService.CategoryList();
         return ResponseEntity.ok(categories);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void categoryDeleteById(@PathVariable(value = "id") Long id) {
+    @DeleteMapping("category/delete/{id}")
+    public void categoryDeleteById(@PathVariable(value = "id") Long id)throws CustomeException {
+
         try {
-            categoryService.deleteCategoryById(id);
+            System.out.println("hello wod");
+            categoryService.deleteCategory(id);
         } catch (CustomeException e) {
-            e.printStackTrace();
+            e.getMessageError();
         }
 
     }
+
 }

@@ -1,6 +1,6 @@
 package library.service.user;
 
-import library.dto.UserDTO;
+import library.dto.ConnectionDTO;
 import library.exception.CustomeException;
 import library.model.Role;
 import library.model.Token;
@@ -36,7 +36,7 @@ public class AdminService {
 
 
     // creation d'un utilisateur;
-    public User creatUser(UserDTO userDTO) throws CustomeException {
+    public User creatUser(ConnectionDTO userDTO) throws CustomeException {
 
         HashMap<String,String> error = new HashMap<>();
         // verification email

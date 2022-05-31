@@ -8,7 +8,7 @@ public class CustomeException extends Exception{
 
 
 
-    public CustomeException(String echec_inscriptiion, HashMap<String, String> messageError) {
+    public CustomeException(String echec, HashMap<String, String> messageError) {
         this.messageError = messageError;
     }
 

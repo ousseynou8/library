@@ -1,5 +1,7 @@
 package library.model;
 
+import library.need.Sexe;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class User extends Personne implements Serializable  {
 
 
 
-    public User(String firstname, String lasName, String sexe, String photo, String email, Date dateBirth, String pseudo, String passWord, Date lastConnecte) {
+    public User(String firstname, String lasName, Sexe sexe, String photo, String email, Date dateBirth, String pseudo, String passWord, Date lastConnecte) {
         super(firstname, lasName, sexe, photo, email, dateBirth);
         this.pseudo = pseudo;
         this.passWord = passWord;

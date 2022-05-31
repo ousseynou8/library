@@ -1,6 +1,5 @@
 package library.service.book;
 
-import library.dto.BookDTO.CategoryDTO;
 import library.exception.CustomeException;
 import library.model.Autor;
 import library.model.Book;
@@ -26,8 +25,7 @@ public class BootService {
     @Autowired
     private AutorRepo autorRepo;
 
-   private HashMap<String,String> ex = new HashMap<>();
-
+    private HashMap<String,String> ex = new HashMap<>();
 
     /**
      * retourner la liste des livre
@@ -92,4 +90,7 @@ public class BootService {
         }
         return null;
     }
+
+
+
 }

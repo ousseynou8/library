@@ -1,6 +1,6 @@
 package library.controler.user;
 
-import library.dto.UserDTO;
+import library.dto.ConnectionDTO;
 import library.exception.CustomeException;
 import library.model.User;
 import library.service.user.AdminService;
@@ -18,9 +18,8 @@ public class UserControler {
 
     @PostMapping("/user/registre")
     @ResponseBody
-    public ResponseEntity<User> userRegistre(@RequestBody UserDTO userDTO) throws CustomeException {
-        System.out.println("ddddddzdsdsdvdsvdsvdsvds"+userDTO.getPaasWord02());
-        System.out.println("ddddddzdsdsdvdsvdsvdsvds"+userDTO.getEmail());
+    public ResponseEntity<User> userRegistre(@RequestBody ConnectionDTO userDTO) throws CustomeException {
+
         User user = adminService.creatUser(userDTO);
         return ResponseEntity.ok(user);
     }
