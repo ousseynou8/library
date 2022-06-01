@@ -3,9 +3,12 @@
  */
 package library.service.category;
 
+import library.dto.BookDTO.TypeDTO;
 import library.exception.CustomeException;
 import library.model.Category;
+import library.model.Type;
 import library.repository.CategoryRepo;
+import library.repository.TypeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +23,8 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepo categoryRepo;
+    @Autowired
+    private TypeRepo typeRepo;
 
 
     public Category creatCategory(String name,String image,String description) throws CustomeException {
@@ -75,4 +80,6 @@ public class CategoryService {
         CustomeException customeException= new CustomeException("error",ex);
         throw customeException;
     }
+
+
 }

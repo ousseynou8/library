@@ -50,16 +50,14 @@ public class AutorService extends EnumConverter{
             System.out.println("--------type ----------passer-------");
             Type type = typeAuto.get();
             type.setAutor(autor1);
-        }else {
-            ex.put("Error","Autor no existant");
         }
 
         if (autorDTO.getEmail().matches(regex)) {
             System.out.println("-----------autor---------email------passer---------");
             autor1.setEmail(autorDTO.getEmail());
-        }else {
+        }/*else {
             ex.put("Error","Email not acceptable");
-        }
+        }*/
 
 
         if (autorDTO.getSexe().equals(Sexe.Femme)) {
@@ -71,8 +69,6 @@ public class AutorService extends EnumConverter{
 
             Sexe sexe = convert(autorDTO.getSexe());
             autor1.setSexe(sexe);
-        }else {
-            ex.put("error","Sexe not correcte");
         }
 
         if (ex.isEmpty()) {

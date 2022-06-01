@@ -28,8 +28,10 @@ public class AutorControler  {
             Autor autor = autorService.creatAutor(autoDTO);
             return ResponseEntity.ok(autor);
         } catch (CustomeException e) {
+            e.fillInStackTrace();
+
             System.out.println("-------------capturer default-------------");
-            e.getMessageError();
+
         }
      return null;
     }

@@ -10,7 +10,7 @@ public interface AutorRepo extends JpaRepository<Autor,Long> {
 
    Optional<Autor> findAutorById(Long autorId);
 
-
+   @Query("SELECT a from Autor a WHERE a.email=:email")
    Optional<Autor> findAutorByEmail(String email);
 
 }
